@@ -16,12 +16,11 @@
   - public
   - protected
   - private
-- polymorphism
-  - overiding
-  - overloading
 - inheritance ("extends" keyword )
+- polymorphism
 - abstraction ("extends" keyword )
-- interface ("implements" keyword)
+  - abstract class
+  - interface ("implements" keyword)
 - traits ("use" keyword)
 - magic method
   - public function \__construct() { /_ Constructor \_/ }
