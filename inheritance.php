@@ -27,6 +27,8 @@ interface IMakhlukHidup
 
 trait BisaBerenang
 {
+  public string $jenisAir = 'air tawar';
+
   public function berenang()
   {
     echo "Kecipak kecipak";
@@ -35,6 +37,8 @@ trait BisaBerenang
 
 trait BisaTerbang
 {
+  public string $jenisSayap = 'sayap bersisik';
+
   public function terbang()
   {
     echo "Terbang aja";
