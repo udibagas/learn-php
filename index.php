@@ -1,96 +1,60 @@
 <?php
+session_start();
+$username = @$_POST['username'];
+$password = @$_POST['password'];
 
-// constants
-const PI = 3.14159; // constant
+$validUser = 'admin';
+$validPassword = 'admin123';
+$message = "Selamat Datang";
 
-// variables
-$name = "John Doe"; // string
-$age = 30; // number
-$height = 175.4; // float
-$isMarried = true; // boolean
-$money = null; // null
+// berhasil login
+if ($username == $validUser && $password == $validPassword) {
+  $_SESSION['username'] = $username;
+  setcookie('username', $username, time() + 60);
+}
 
-$age = '30';
+$message .= " " . @$_SESSION['username'];
+?>
 
-// indexed array
-$hobbies = ["reading", "traveling", "gaming"]; // array
-// $hobbies = array("reading", "traveling", "gaming"); // alternative array syntax
-// echo $hobbies[1];
+<!DOCTYPE html>
+<html lang="en">
 
-// associative array
-$person = [
-  "name" => "Jane Doe",
-  "age" => 28,
-  "city" => "New York"
-];
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <style>
+    form {
+      width: 500px;
+      margin: 100px auto 0;
+    }
 
-// echo $person["name"];
+    .form-row {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
 
-// multi-dimensional array
-$contacts = [
-  "friends" => [
-    ["name" => "Alice", "phone" => "123-456-7890"],
-    ["name" => "Bob", "phone" => "987-654-3210"]
-  ],
-  "family" => [
-    ["name" => "Charlie", "phone" => "555-555-5555"],
-    ["name" => "Diana", "phone" => "444-444-4444"]
-  ]
-];
+<body>
+  <form action="" method="post">
+    <h1><?= $message; ?></h1>
+    <div class="form-row">
+      <label for="username">Username</label> <br>
+      <input type="text" placeholder="Username" id="username" name="username">
+    </div>
 
-// echo $contacts['family'][0]['phone'];
-print_r($contacts);
+    <div class="form-row">
+      <label for="password">Password</label> <br>
+      <input type="password" placeholder="Password" id="password" name="password">
+    </div>
 
-// echo "Hello, my name is $name and I am $age years old.";
+    <div class="form-row">
+      <button type="submit">LOGIN</button>
+    </div>
 
-// object (dynamic properties)
-$personObject = new stdClass(); // instantiation
-$personObject->name = "Alice"; // personObject.name
-$personObject->age = 25;
-$personObject->city = "Los Angeles";
+    <h3><?= $_COOKIE['PHPSESSID'] ?></h3>
 
-print_r($personObject->address);
+  </form>
+</body>
 
-// oprations
-// arithmetic operations
-$sum = 10 + 5; // addition
-$difference = 10 - 5; // subtraction
-$product = 10 * 5; // multiplication
-$quotient = 10 / 5; // division
-$remainder = 10 % 3; // modulus
-$power = 2 ** 3; // 2 raised to the power of 3  
-
-// assignment operations
-$x = 10; // assignment
-$x += 5; // equivalent to $x = $x + 5; (addition assignment)
-$x -= 3; // equivalent to $x = $x - 3; (subtraction assignment)
-$x *= 2; // equivalent to $x = $x * 2; (multiplication assignment)
-$x /= 4; // equivalent to $x = $x / 4; (division assignment)
-$x %= 3; // equivalent to $x = $x % 3; (modulus assignment)
-$x **= 2; // equivalent to $x = $x ** 2; (exponentiation assignment)
-
-// comparison operations
-$isEqual = (10 == 10); // equal
-$isNotEqual = (10 != 5); // not equal
-$isIdentical = (10 === 10); // identical (same value and type)
-$isNotIdentical = (10 !== "10"); // not identical (different type)
-$isGreater = (10 > 5); // greater than
-$isLess = (5 < 10); // less than
-$isGreaterOrEqual = (10 >= 10); // greater than or equal to
-$isLessOrEqual = (5 <= 10); // less than or equal to
-
-// logical operations
-$and = (true && false); // logical AND
-$or = (true || false); // logical OR
-$not = !true; // logical NOT
-
-// string operations
-$greeting = "Hello, " . $name; // concatenation //  "Hello" + " John Doe"
-// $length = strlen($greeting); // string length
-// $upperCase = strtoupper($greeting); // convert to uppercase
-// $lowerCase = strtolower($greeting); // convert to lowercase
-// $substring = substr($greeting, 0, 5); // get substring
-// $replaced = str_replace("John", "Jane", $greeting); // replace substring
-
-echo PI;
-echo $personObject->address;
+</html>
